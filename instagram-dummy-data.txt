@@ -1,25 +1,3 @@
-** ==  For Sidebar == **
-(** Don't Forgot the import icons **)
-  
-
-=================================
-
-** For Mobile Nav** 
-(** Don't Forgot the import icons **)
-  const sidebarItems = [
-    {
-      link: "/search",
-      icon: SearchLogo,
-    },
-    {
-      link: "/create",
-      icon: CreateLogo,
-    },
-    {
-      link: "/reels",
-      icon: ReelsLogo,
-    },
-  ];
 
 =================================
 
