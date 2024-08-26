@@ -1,7 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import LargeNav from '../components/Header/LargeNav/LargeNav';
-import MobileNav from '../components/Header/MobileNav/MobileNav';
+import LargeNav from '../../components/Header/LargeNav/LargeNav';
+import MobileNav from '../../components/Header/MobileNav/MobileNav';
+import Feed from '../Feed/Feed';
 
 const Home = () => {
   return (
@@ -16,6 +17,9 @@ const Home = () => {
           <MobileNav />
         </div>
         {/* Feed and Profile routing section */}
+        <Routes>
+          <Route exact path="/" element={<Feed />} />
+        </Routes>
       </div>
     </>
   );
