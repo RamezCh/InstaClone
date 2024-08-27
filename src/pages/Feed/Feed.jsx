@@ -2,6 +2,7 @@ import React from 'react';
 import TopNav from '../../components/Header/TopNav/TopNav';
 import Stories from '../Stories/Stories';
 import FeedCard from './FeedCard';
+import RecommendedUser from '../RecommendedUser/RecommendedUser';
 
 const Feed = () => {
   return (
@@ -17,11 +18,14 @@ const Feed = () => {
           <div className="w-full h-auto flex items-center justify-center mt-7">
             <div className="lg:w-[73%] md:w-[73%] sm:w-[80%] w-[80%] h-auto">
               <FeedCard />
+              <FeedCard />
             </div>
           </div>
         </div>
         {/* Recommended User Section */}
-        <div className="w-[25%] h-auto lg:block md:hidden sm:hidden hidden"></div>
+        <div className="w-[25%] h-auto lg:block md:hidden sm:hidden hidden">
+          <RecommendedUser />
+        </div>
       </div>
     </>
   );
