@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import instagramFeed from './FeedData';
 import { Link } from 'react-router-dom';
 import Ellipse from '../../icons/Ellipse/Ellipse';
@@ -9,9 +9,24 @@ import Save from '../../icons/Save/Save';
 import Emoji from '../../icons/Emoji/Emoji';
 
 const FeedCard = () => {
+  const [feedData, setFeedData] = useState(instagramFeed);
+
+  const toggleLike = id => {
+    const updatedFeedData = feedData.map(feed =>
+      feed.id === id
+        ? {
+            ...feed,
+            isLiked: !feed.isLiked,
+            likeCount: feed.isLiked ? feed.likeCount - 1 : feed.likeCount + 1,
+          }
+        : feed
+    );
+    setFeedData(updatedFeedData);
+  };
+
   return (
     <>
-      {instagramFeed.map(feed => (
+      {feedData.map(feed => (
         <div key={feed.id} className="w-full h-auto mb-6">
           {/* profile pic, username and time */}
           <div className="w-full h-auto flex items-center justify-between mb-2">
@@ -49,9 +64,14 @@ const FeedCard = () => {
           </div>
           {/* User Action (like, comment, share & save) */}
           <div className="w-full h-auto flex items-center justify-between">
-            <Like />
-            <Comment />
-            <Share />
+            <div className="flex items-center gap-x-3">
+              <Like
+                isLiked={feed.isLiked}
+                toggleLike={() => toggleLike(feed.id)}
+              />
+              <Comment />
+              <Share />
+            </div>
             <Save />
           </div>
           {/* Like Count */}
@@ -71,7 +91,8 @@ const FeedCard = () => {
                 className="w-5 h-5 rounded-full object-full p-[1.5px] bg-black -ml-3"
               />
             </div>
-            {feed.likeCount} likes
+            {new Intl.NumberFormat(navigator.language).format(feed.likeCount)}{' '}
+            likes
           </Link>
           {/* Captions section */}
           <div className="w-full h-auto flex items-center gap-x-1">
